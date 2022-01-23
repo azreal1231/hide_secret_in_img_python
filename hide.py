@@ -1,3 +1,5 @@
+import json
+
 from stegano import lsb
 from termcolor import colored
 import cryptocode
@@ -45,8 +47,13 @@ def encrypt_text(_key, _text):
 
 
 def encrypt_img(_file, _encrypt, _text):
+    data = {
+        'encrypted': True if _encrypt == 'yes' else False,
+        'text': _text
+    }
+    json_data = json.dumps(data)
     try:
-        secret = lsb.hide(_file, _text)
+        secret = lsb.hide(_file, json_data)
         new_file = f"encrypted.png"
         print('Encrypted File Name:  ' + new_file + '\n')
         secret.save(new_file)
