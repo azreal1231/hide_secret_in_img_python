@@ -23,12 +23,12 @@ def test_if_file_exists(_file_name):
 
 def ask_for_encryption():
     awns = ['yes', 'no']
-    awn = input('Would You Like To Encrypt Your Secret Text {YES/NO}: ')
+    awn = input('Would You Like To Encrypt Your Secret Text {YES/NO}... ')
     awn = awn.lower()
     valid_awn = True if awn in awns else False
     while not valid_awn:
         print(colored(f'{awn} is not a Valid Answer!\n', 'red'))
-        awn = input('Would You Like To Encrypt Your Secret Text {YES/NO}: ')
+        awn = input('Would You Like To Encrypt Your Secret Text {YES/NO}... ')
         awn = awn.lower()
         valid_awn = True if awn in awns else False
 
@@ -36,7 +36,7 @@ def ask_for_encryption():
 
 
 def get_encrypt_key():
-    return input('Enter Encryption Key!: ')
+    return input('Enter Encryption Key... ')
 
 
 def encrypt_text(_key, _text):
@@ -58,16 +58,12 @@ def encrypt_img(_file, _encrypt, _text):
 
 file_to_embed_data_into = input('Please Enter File Name: ')
 file_to_embed_data_into = test_if_file_exists(file_to_embed_data_into)
-# print(file_to_embed_data_into)
-# print(file_to_embed_data_into)
-#
-# print(os.path.exists(file_to_embed_data_into))
 
 encrypt = ask_for_encryption()
 if encrypt == 'yes':
     key = get_encrypt_key()
 
-secret_text = input('Please Enter Secret Text.: ')
+secret_text = input('Please Enter Secret Text... ')
 
 if encrypt == 'yes':
     secret_text = encrypt_text(key, secret_text)
